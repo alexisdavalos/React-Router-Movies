@@ -18,7 +18,7 @@ const MovieList = ({movies}) => {
     
   //   getMovies();
   // }, []);
-  console.log('This is the Movies Object from: MovieList.Js', movies)
+  // console.log('This is the Movies Object from: MovieList.Js', movies)
   return (
     <div className="movie-list">
       {movies.map(movie => (

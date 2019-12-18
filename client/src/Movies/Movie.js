@@ -2,18 +2,26 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import MovieCard from './MovieCard';
 
-const Movie = ({movies}) => {
+const Movie = (props) => {
   const {movieNum} = useParams(); //props from MovieNum
   const number = Number(movieNum)
   // const movieID = movie.
-  console.log('This is the Movie Object with  from: Movie.Js', movies[number])
-  if (!movies[number]) {
+  console.log('This is the Movie Object with  from: Movie.Js', props.movies[number])
+  if (!props.movies[number]) {
     return <div>Loading movie information...</div>;
   }
+   // Uncomment this only when you have moved on to the stretch goals
+   const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(props.movies)
+  }
   return (
-    <MovieCard movie={movies[number]}/>
-    // <div></div>
+    <MovieCard movie={props.movies[number]} saveMovie={saveMovie}/>
   )
+
+
+
+
   //Commented out old API Call
 
   // useEffect(() => {
@@ -30,12 +38,7 @@ const Movie = ({movies}) => {
   //       });
 
   // },[]);
-  
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+
 
 
   // const { title, director, metascore, stars } = movies;

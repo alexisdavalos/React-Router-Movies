@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const MovieCard = (props) => {
-  console.log('This is the Props Object from: MovieCard.Js', props)
-  const { title, director, metascore, stars, id } = props.movie;
+const MovieCard = ({movie, saveMovie}) => {
+  // console.log('This is the Props Object from: MovieCard.Js', {movie})
+  const { title, director, metascore, stars, id } = movie;
   return (
-    <Link to={`/movies/${id}`}>
+    <Link onClick={console.log('This is the Link Object from: MovieCard.Js')} to={`/movies/${id}`}>
     <div className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
@@ -21,8 +21,10 @@ const MovieCard = (props) => {
           {star}
         </div>
       ))}
+       <div className="save-button" onClick ={saveMovie}>Save</div>
     </div>
     </Link>
+
   );
 };
 

@@ -7,12 +7,12 @@ import axios from 'axios';
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
-
-  const addToSavedList = movie => {
-    setSavedList( [...savedList, movie] );
+  const [movies, setMovies] = useState([])
+  const addToSavedList = movies => {
+    setSavedList( [...savedList, movies] );
   };
   //get movies from API and set to State
-  const [movies, setMovies] = useState([])
+
   useEffect(() => {
     const getMovies = () => {
       axios
@@ -35,7 +35,7 @@ const App = () => {
       {/* Delcare Routes */}
       <Switch>
         <Route path="/movies/:movieNum">
-          <Movie movies={movies}/>
+          <Movie movies={movies} addToSavedList={addToSavedList}/>
         </Route>
         <Route exact path="/">
           <MovieList movies={movies}/>
